@@ -1,5 +1,5 @@
 import { Router, Request, Response} from 'express';
-import { createUsuario, createTarefa, getAllTarefas, loginUsuario, getCountAllTarefas} from '../controllers/userController';
+import { createUsuario, createTarefa, getAllTarefas, loginUsuario} from '../controllers/userController';
 import { notificacao } from '../webhooks/notificacaoWebhook';
 import { auth, authAdmin } from '../middlewares/auth';
 
@@ -18,10 +18,6 @@ routes.post('/auth', loginUsuario)
 // Rota de Listagem de Tarefas
 // Requer campo: usuarioId
 routes.post('/listar-tarefas', getAllTarefas);
-
-// Rota de Quantidade de Tarefas
-// Requer campo: usuarioId
-routes.post('/quantidade-tarefas', getCountAllTarefas);
 
 // Rota do Webhook de Notificação
 // Requer campo: titulo, descricao(opcional), data e hora, usuarioId

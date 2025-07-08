@@ -174,36 +174,6 @@ export const getAllTarefas = async (request: Request, response: Response) => {
     }
 }
 
-// Lista a quantidade de tarefas do usuário
-export const getCountAllTarefas = async (request: Request, response: Response) => {
-    try{
-
-        // Verificando se o usuário existe
-        const usuario = await prisma.usuario.findUnique({
-            where: { id: request.body.usuarioId }
-        })
-
-        if(!usuario){
-            response.status(404).json({ error: 'Usuário não encontrado' });
-            return;
-        }
-
-        // Conta as tarefas do usuário
-        const tarefas = await prisma.tarefas.count({
-            where: {
-                usuarioId: request.body.usuarioId
-            }
-        });
-
-        // Retorna a quantidade de tarefas
-        response.status(200).json(tarefas);
-        return;
-
-    }catch(error){
-        response.status(400).json({ message: 'Erro ao buscar tarefas'});
-        return;
-    }
-}
 
 
 
