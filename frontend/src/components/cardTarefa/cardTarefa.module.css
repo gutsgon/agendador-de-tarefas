@@ -1,0 +1,18 @@
+.cardTarefa {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+}
+
+.cardTarefa h2 {
+  font-size: 1.25rem;
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.cardTarefa p {
+  color: #444;
+  margin-bottom: 0.4rem;
+}
