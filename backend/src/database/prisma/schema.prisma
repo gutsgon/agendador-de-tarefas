@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id      String   @id @default(uuid())
+  nome    String
+  email   String   @unique
+  senha   String
+  admin   Boolean  @default(false)
+  tarefas Tarefas[] 
+  @@map("usuario")
+}
+
+model Tarefas {
+  id              String   @id @default(uuid())
+  titulo          String
+  descricao       String?
+  horarioExecucao DateTime @map("horario_execucao")
+  usuarioId       String   
+  usuario         Usuario  @relation(fields: [usuarioId], references: [id])
+  @@map("tarefas")
+}
