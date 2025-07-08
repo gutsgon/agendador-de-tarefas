@@ -73,7 +73,7 @@ docker-compose logs -f backend
 
 ---
 
-## 🧪 Rodar testes do backend
+## 🧪 Rodar testes do backend novamente
 
 ```bash
 docker-compose run --rm backend-tests
