@@ -1,4 +1,3 @@
-
 # 📝 Aplicação de Tarefas com Notificações via Webhook
 
 Este projeto é uma aplicação fullstack para cadastro e notificação de tarefas, utilizando:
@@ -36,7 +35,7 @@ docker-compose up --build
 
 Esse comando irá:
 
-- Subir o **Redis**  (porta `6379`) 
+- Subir o **Redis** (porta `6379`)  
 - Buildar o **backend** (porta `3333`)  
 - Buildar o **frontend** (porta `5173`)  
 
@@ -49,7 +48,32 @@ Esse comando irá:
 
 ---
 
-## 🧪 Rodar testes novamente (backend)
+## 🔐 Login de Teste
+
+Use as credenciais abaixo para acessar a aplicação manualmente:
+
+- **Email**: `teste@gmail.com`  
+- **Senha**: `123456`  
+
+Após o login, você será redirecionado para o endpoint `/tarefas`.
+
+> **Importante**: Tente acessar `/tarefas` antes do login para verificar o comportamento de autenticação da aplicação.
+
+---
+
+## 📦 Notificações via Webhook
+
+- Ao cadastrar uma tarefa com horário futuro, a aplicação agenda uma notificação via BullMQ.  
+- A notificação será **disparada automaticamente no console do Docker** 5 minutos antes do horário da tarefa.  
+- Você pode acompanhar o envio da notificação diretamente nos logs do container backend com:
+
+```bash
+docker-compose logs -f backend
+```
+
+---
+
+## 🧪 Rodar testes do backend
 
 ```bash
 docker-compose run --rm backend-tests
@@ -71,7 +95,6 @@ docker-compose run --rm backend-tests
 
 ## ⚠️ Observações
 
-- Certifique-se de que as portas 3333 (backend), 5173 (frontend) e 6379 (Redis) estão livres.  
-- O backend usa Redis para agendamento de notificações (BullMQ).  
-- As tarefas são notificadas via webhook 5 minutos antes do horário agendado.  
-
+- Certifique-se de que as portas `3333`, `5173` e `6379` estejam livres.  
+- A fila BullMQ com Redis gerencia o agendamento e execução de notificações.  
+- Notificações são simuladas como webhooks e aparecem nos logs do backend.
