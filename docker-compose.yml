@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3333:3333"
+    volumes:
+      - ./backend:/app/backend
+    depends_on:
+      - redis
+    environment:
+      - PORT=3333
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app/frontend
+    depends_on:
+      - backend
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  backend-tests:
+    build: ./backend
+    depends_on:
+      - redis
+    command: npm run test
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+volumes:
+  redis_data:
