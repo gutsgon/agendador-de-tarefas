@@ -57,6 +57,7 @@ export function Auth(){
                 const flagSignup = await signup(formData)
                 if(!flagSignup) {
                     alert('Permissão inválida')
+                    return;
                 }
                 navigate('/tarefas')
             break;
