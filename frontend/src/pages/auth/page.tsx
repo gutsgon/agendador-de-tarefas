@@ -42,7 +42,11 @@ export function Auth(){
         switch(formType){
             case 'login':
                 const flagLogin = await login(formData)
-                if(flagLogin) navigate('/tarefas')
+                if(!flagLogin){
+                    alert('Login inválido')
+                    return;
+                } 
+                navigate('/tarefas')
                 break;
             case 'signup':
                 const usuarioId = localStorage.getItem('auth')
