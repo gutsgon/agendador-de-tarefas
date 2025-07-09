@@ -46,10 +46,13 @@ export function authService() {
         body: JSON.stringify(formData),
       });
 
-      const resultado = await response.json();
-      console.log(resultado)
+      const resultado = await response.json()
 
-      return resultado.success === true;
+      if(resultado){
+        return true;
+      }
+
+      return resultado.sucess === true
     } catch (error) {
       console.error('Erro ao cadastrar:', error);
       return false;

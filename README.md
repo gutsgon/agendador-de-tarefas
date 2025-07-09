@@ -1,3 +1,4 @@
+
 # 📝 Aplicação de Tarefas com Notificações via Webhook
 
 Este projeto é uma aplicação fullstack para cadastro e notificação de tarefas, utilizando:
@@ -28,6 +29,16 @@ cd agendador-de-tarefas
 ---
 
 ### 3. Build, testes e deploy local com Docker
+
+---
+## ⚠️ Observações
+
+- **Antes de rodar a aplicação no Docker, lembre-se criar e substituir as variáveis de ambiente do arquivo `.env` conforme o exemplo fornecido em `.env.example` no diretório do backend (`/backend`) do projeto.**  
+- Certifique-se de que as portas `3333`, `5173` e `6379` estejam livres.  
+- A fila BullMQ com Redis gerencia o agendamento e execução de notificações.  
+- Notificações são simuladas como webhooks e aparecem nos logs do backend.
+
+---
 
 ```bash
 docker-compose up --build
@@ -91,10 +102,3 @@ docker-compose run --rm backend-tests
   └── README.md
 ```
 
----
-
-## ⚠️ Observações
-
-- Certifique-se de que as portas `3333`, `5173` e `6379` estejam livres.  
-- A fila BullMQ com Redis gerencia o agendamento e execução de notificações.  
-- Notificações são simuladas como webhooks e aparecem nos logs do backend.
