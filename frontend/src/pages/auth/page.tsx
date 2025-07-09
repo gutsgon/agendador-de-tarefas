@@ -45,12 +45,20 @@ export function Auth(){
                 if(flagLogin) navigate('/tarefas')
                 break;
             case 'signup':
+                const usuarioId = localStorage.getItem('auth')
+                if(!usuarioId){
+                    alert('Usuário não authenticado')
+                    return;
+                }
                 if(formData.senha !== formData.confirmarSenha){
-                    console.log('As senhas não conferem');
+                    alert('As senhas não conferem');
                     return;
                 }
                 const flagSignup = await signup(formData)
-                if(flagSignup) navigate('/tarefas')
+                if(!flagSignup) {
+                    alert('Permissão inválida')
+                }
+                navigate('/tarefas')
             break;
         }
     }
