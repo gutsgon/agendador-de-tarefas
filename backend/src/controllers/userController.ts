@@ -157,6 +157,16 @@ export const createTarefa = async (request: Request, response: Response) => {
 export const getAllTarefas = async (request: Request, response: Response) => {
     try{
 
+        // Verificando se o usuário existe
+        if(!await prisma.usuario.findFirst({
+            where:{
+                id: usuarioId
+            }
+        })){ 
+            response.status(404).json({ error: 'Usuário não encontrado' });
+            return;
+        }
+
         // Encontrando as tarefas do usuário
         const tarefas = await prisma.tarefas.findMany({
             where:{
