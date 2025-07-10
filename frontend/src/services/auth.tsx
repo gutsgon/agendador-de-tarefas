@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const url = 'http://localhost:3333'; // ou onde estiver sua API
+const url = 'http://localhost:3333'; // URL da API
 
 export function authService() {
   const [authLoading, setAuthLoading] = useState(false);
