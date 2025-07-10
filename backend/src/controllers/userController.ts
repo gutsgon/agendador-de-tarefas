@@ -160,7 +160,7 @@ export const getAllTarefas = async (request: Request, response: Response) => {
         // Verificando se o usuário existe
         if(!await prisma.usuario.findFirst({
             where:{
-                id: usuarioId
+                id: request.body.usuarioId
             }
         })){ 
             response.status(404).json({ error: 'Usuário não encontrado' });
