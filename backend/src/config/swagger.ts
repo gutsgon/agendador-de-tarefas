@@ -12,6 +12,20 @@ const swaggerDefinition = {
       url: 'http://localhost:3333',
     },
   ],
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+      },
+    },
+  },
+  security: [
+    {
+      bearerAuth: [],
+    },
+  ],
 };
 
 export const swaggerSpec = swaggerJSDoc({
