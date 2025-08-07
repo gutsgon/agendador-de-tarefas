@@ -56,7 +56,7 @@ Esse comando irá:
 
 - **Frontend**: http://localhost:5173  
 - **Backend API**: http://localhost:3333
-- **Documentação da API**: http//localhost:3333/docs 
+- **Documentação da API**: http://localhost:3333/docs 
 
 ---
 
