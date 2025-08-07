@@ -55,7 +55,8 @@ Esse comando irá:
 ### 4. Acessar a aplicação
 
 - **Frontend**: http://localhost:5173  
-- **Backend API**: http://localhost:3333  
+- **Backend API**: http://localhost:3333
+- **Documentação da API**: http//localhost:3333/docs 
 
 ---
 
