@@ -9,7 +9,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: 'https://agendador-de-tarefas-production.up.railway.app', 'http://localhost:3333',
+      url: 'https://agendador-de-tarefas-production.up.railway.app' || 'http://localhost:3333',
     },
   ],
   components: {
